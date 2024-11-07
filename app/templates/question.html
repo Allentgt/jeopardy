@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jeopardy Question</title>
+</head>
+<body>
+    <h1>{{ question['question'] }}</h1>
+    {% if question['type'] == 'audio' %}
+        <audio controls>
+            <source src="{{ url_for('static', filename='audio/' + question['file']) }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    {% elif question['type'] == 'image' %}
+        <img src="{{ url_for('static', filename='images/' + question['file']) }}" alt="Question Image">
+    {% endif %}
+    <form action="/answer" method="post">
+        <input type="hidden" name="category" value="{{ category }}">
+        <input type="hidden" name="value" value="{{ value }}">
+        <label for="team">Select Team:</label>
+        <select name="team">
+            {% for team in teams %}
+                <option value="{{ team }}">{{ team }}</option>
+            {% endfor %}
+        </select>
+        <label for="answer">Your Answer:</label>
+        <input type="text" name="answer" required>
+        <button type="submit">Submit Answer</button>
+    </form>
+</body>
+</html>

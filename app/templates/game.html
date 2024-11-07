@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jeopardy Game</title>
+</head>
+<body>
+    <h1>Jeopardy Game Board</h1>
+    <div>
+        {% for team, score in scores.items() %}
+            <p>{{ team }}: {{ score }} points</p>
+        {% endfor %}
+    </div>
+    <table>
+        {% for category in game_data['categories'] %}
+            <tr>
+                <th colspan="5">{{ category['name'] }}</th>
+            </tr>
+            <tr>
+                {% for question in category['questions'] %}
+                    <td>
+                        {% if not question.answered %}
+                            <form action="/question/{{ loop.index0 }}/{{ question.points }}" method="get">
+                                <button type="submit">{{ question.points }}</button>
+                            </form>
+                        {% else %}
+                            Answered
+                        {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

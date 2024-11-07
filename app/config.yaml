@@ -1,0 +1,21 @@
+categories:
+  - name: "Science"
+    questions:
+      - question: "What is the chemical symbol for water?"
+        answer: "H2O"
+        points: 100
+        type: "text"
+      - question: "Name the planet known as the Red Planet."
+        answer: "Mars"
+        points: 200
+        type: "text"
+  - name: "History"
+    questions:
+      - question: "Who was the first President of the United States?"
+        answer: "George Washington"
+        points: 100
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 200
+        type: "text"
