@@ -9,6 +9,18 @@ categories:
         answer: "Mars"
         points: 200
         type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 300
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 400
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 500
+        type: "text"
   - name: "History"
     questions:
       - question: "Who was the first President of the United States?"
@@ -18,4 +30,82 @@ categories:
       - question: "In what year did the Titanic sink?"
         answer: "1912"
         points: 200
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 300
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 400
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 500
+        type: "text"
+  - name: "History2"
+    questions:
+      - question: "Who was the first President of the United States?"
+        answer: "George Washington"
+        points: 100
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 200
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 300
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 400
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 500
+        type: "text"
+  - name: "History3"
+    questions:
+      - question: "Who was the first President of the United States?"
+        answer: "George Washington"
+        points: 100
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 200
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 300
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 400
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 500
+        type: "text"
+  - name: "History4"
+    questions:
+      - question: "Who was the first President of the United States?"
+        answer: "George Washington"
+        points: 100
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 200
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 300
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 400
+        type: "text"
+      - question: "In what year did the Titanic sink?"
+        answer: "1912"
+        points: 500
         type: "text"
