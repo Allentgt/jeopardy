@@ -2,29 +2,78 @@
 <html>
 <head>
     <title>Jeopardy Question</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .question-card {
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fafafa;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 1.5em;
+            font-weight: 500;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-size: 1em;
+            color: #757575;
+        }
+        .submit-button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .submit-button:hover {
+            background-color: #388e3c;
+        }
+    </style>
 </head>
 <body>
+<div class="question-card">
     <h1>{{ question['question'] }}</h1>
+
     {% if question['type'] == 'audio' %}
-        <audio controls>
-            <source src="{{ url_for('static', filename='audio/' + question['file']) }}" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+    <audio controls>
+        <source src="{{ url_for('static', filename='audio/' + question['file']) }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
     {% elif question['type'] == 'image' %}
-        <img src="{{ url_for('static', filename='images/' + question['file']) }}" alt="Question Image">
+    <img src="{{ url_for('static', filename='images/' + question['file']) }}" alt="Question Image"
+         style="max-width:100%; margin-top: 10px;">
     {% endif %}
+
     <form action="/answer" method="post">
-        <input type="hidden" name="category" value="{{ category }}">
+        <input type="hidden" name="index" value="{{ index }}">
         <input type="hidden" name="value" value="{{ value }}">
+
         <label for="team">Select Team:</label>
-        <select name="team">
+        <select name="team" class="browser-default">
             {% for team in teams %}
-                <option value="{{ team }}">{{ team }}</option>
+            <option value="{{ team }}">{{ team }}</option>
             {% endfor %}
         </select>
+
         <label for="answer">Your Answer:</label>
-        <input type="text" name="answer" required>
-        <button type="submit">Submit Answer</button>
+        <input type="text" name="answer" required class="input-field">
+
+        <button type="submit" class="submit-button">Submit Answer</button>
     </form>
+</div>
 </body>
 </html>
