@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Jeopardy Game{% endblock %}</title>
+
+    <!-- Base Styles and Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+<!-- Header with Home Icon Button -->
+<header>
+    <a href="/" class="home-button">
+        <i class="fas fa-home"></i> <!-- Font Awesome home icon -->
+    </a>
+</header>
+>
+
+<!-- Dark Theme Toggle Button -->
+<button onclick="toggleDarkTheme()" id="theme-toggle" class="theme-toggle-button">
+    <i id="theme-icon" class="fas fa-moon"></i> <!-- Default to moon icon -->
+</button>
+
+<!-- Page Content -->
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Dark Theme Toggle Script -->
+<script>
+    // Function to toggle between dark and light themes
+    function toggleDarkTheme() {
+        document.body.classList.toggle('dark-theme');
+
+        // Update the icon based on the theme
+        const icon = document.getElementById("theme-icon");
+        if (document.body.classList.contains('dark-theme')) {
+            icon.classList.remove("fa-sun");
+            icon.classList.add("fa-moon");
+            localStorage.setItem('darkTheme', 'enabled');
+        } else {
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+            localStorage.setItem('darkTheme', 'disabled');
+        }
+    }
+
+    // Preserve theme and icon on page reload
+    if (localStorage.getItem('darkTheme') === 'enabled') {
+        document.body.classList.add('dark-theme');
+        document.getElementById("theme-icon").classList.add("fa-moon");
+    } else {
+        document.getElementById("theme-icon").classList.add("fa-sun");
+    }
+</script>
+</body>
+</html>
