@@ -5,7 +5,6 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
-
 # Mount static files
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
@@ -62,7 +61,7 @@ async def submit_answer(request: Request, team: str = Form(...), index: int = Fo
     if game_state["questions_left"] == 0:
         return templates.TemplateResponse("game_over.html",
                                           {"request": request, "teams": game_state["teams"], "game_data": game_data,
-                                           "scores": game_state["scores"]})
+                                           "scores": game_state["scores"], "winner": max(game_state["scores"], key=game_state["scores"].get)})
     context = {"request": request, "teams": game_state["teams"], "game_data": game_data, "scores": game_state["scores"],
                "board": game_state["board"], "questions_left": game_state["questions_left"]}
     return templates.TemplateResponse("game.html", context)

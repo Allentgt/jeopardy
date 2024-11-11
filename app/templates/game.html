@@ -5,11 +5,23 @@
 {% block content %}
 <h1>Jeopardy Game Board</h1>
 
-<div class="score-section">
-    {% for team, score in scores.items() %}
-    <p>{{ team }}: {{ score }} points</p>
-    {% endfor %}
-</div>
+<!-- Scores Table -->
+<table class="score-table striped highlight centered">
+    <thead class="score-header">
+        <tr>
+            {% for team in scores.keys() %}
+            <th>{{ team }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {% for score in scores.values() %}
+            <td>{{ score }} points</td>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
 
 <table>
     {% for category_index in range(game_data['categories'] | length) %}
