@@ -5,7 +5,6 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
-logger = logging.getLogger(__name__)
 # Mount static files
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
