@@ -5,13 +5,25 @@
 {% block content %}
 <h1>Jeopardy Game Board</h1>
 
-<div class="score-section">
-    {% for team, score in scores.items() %}
-    <p>{{ team }}: {{ score }} points</p>
-    {% endfor %}
-</div>
+<!-- Scores Table -->
+<table class="score-table striped highlight centered">
+    <thead class="score-header">
+        <tr>
+            {% for team in scores.keys() %}
+            <th>{{ team }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {% for score in scores.values() %}
+            <td>{{ score }} points</td>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
 
-<table class="striped highlight centered">
+<table>
     {% for category_index in range(game_data['categories'] | length) %}
     {% set category = game_data['categories'][category_index] %}
     <tr>
@@ -22,7 +34,7 @@
         <td>
             {% if not question.answered %}
             <form action="/question/{{ category_index }}/{{ question.points }}" method="get">
-                <button type="submit" class="btn waves-effect waves-light question-button" {% if board[category_index][loop.index0] %}disabled{%
+                <button type="submit" class="question-button" {% if board[category_index][loop.index0] %}disabled{%
                         endif %}>{{ question.points }}
                 </button>
             </form>

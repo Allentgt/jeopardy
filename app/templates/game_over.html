@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Game Over{% endblock %}
+
+{% block content %}
+
+<h1>Game Over</h1>
+
+{% if winner %}
+    <h2>Congratulations to the Winner: {{ winner }}!</h2>
+    <p>Final Scores:</p>
+        <table class="score-table striped highlight centered">
+            <thead class="score-header">
+                <tr>
+                    {% for team in scores.keys() %}
+                    <th>{{ team }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for score in scores.values() %}
+                    <td>{{ score }} points</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+{% else %}
+    <h2>It's a Tie!</h2>
+    <p>Final Scores:</p>
+        <table class="score-table striped highlight centered">
+            <thead class="score-header">
+                <tr>
+                    {% for team in scores.keys() %}
+                    <th>{{ team }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for score in scores.values() %}
+                    <td>{{ score }} points</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+{% endif %}
+
+<button type="submit" onclick="window.location.href='/'" class="button-primary">Play Again</button>
+{% endblock %}
