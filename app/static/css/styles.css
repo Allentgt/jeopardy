@@ -187,6 +187,15 @@ h1 {
     text-align: center;
 }
 
+.score-header {
+    font-size: 1.2em;
+    font-weight: 500;
+    background-color: #ffd966;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
