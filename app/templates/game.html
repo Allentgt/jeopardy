@@ -11,7 +11,7 @@
     {% endfor %}
 </div>
 
-<table>
+<table class="striped highlight centered">
     {% for category_index in range(game_data['categories'] | length) %}
     {% set category = game_data['categories'][category_index] %}
     <tr>
@@ -22,7 +22,7 @@
         <td>
             {% if not question.answered %}
             <form action="/question/{{ category_index }}/{{ question.points }}" method="get">
-                <button type="submit" class="question-button" {% if board[category_index][loop.index0] %}disabled{%
+                <button type="submit" class="btn waves-effect waves-light question-button" {% if board[category_index][loop.index0] %}disabled{%
                         endif %}>{{ question.points }}
                 </button>
             </form>
