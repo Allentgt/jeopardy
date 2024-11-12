@@ -181,7 +181,7 @@ h1 {
 .category-header {
     font-size: 1.2em;
     font-weight: 500;
-    background-color: #2196f3;
+    background-color: #42a5f5;
     color: #fff;
     padding: 10px;
     text-align: center;
@@ -190,7 +190,7 @@ h1 {
 .score-header {
     font-size: 1.2em;
     font-weight: 500;
-    background-color: #ffd966;
+    background-color: #42a5f5;
     color: #fff;
     padding: 10px;
     text-align: center;
@@ -212,7 +212,7 @@ td, th {
     width: 100%;
     font-weight: 500;
     color: #fff;
-    background-color: #4caf50;
+    background-color: #388e3c;
     border: none;
     padding: 8px;
     border-radius: 5px;
