@@ -1,3 +1,5 @@
+import os
+
 import uvicorn
 import yaml
 from fastapi import FastAPI, Request, Form, HTTPException
@@ -13,7 +15,14 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 # Load configuration
-with open("config.yaml", "r") as file:
+config_path = os.getenv("CONFIG_PATH", "config.yaml")
+
+# Check if the config file exists
+if not os.path.exists(config_path):
+    raise FileNotFoundError(f"The configuration file '{config_path}' was not found.")
+
+# Load the configuration file
+with open(config_path, "r") as file:
     game_data = yaml.safe_load(file)
 
 # Store game state
