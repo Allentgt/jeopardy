@@ -9,3 +9,4 @@ wheels/
 # Virtual environments
 .venv
 app/media
+app/config*.yaml
