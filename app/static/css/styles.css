@@ -3,26 +3,23 @@
 *::before,
 *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #f5f5f5;
     color: #212121;
     margin: 0;
     padding: 20px;
     transition: background-color 0.3s, color 0.3s;
+    line-height: 1.6;
 }
 
 /* Dark Theme Styles */
 .dark-theme {
     background-color: #121212;
-    color: #e0e0e0;
-}
-
-.dark-theme h1,
-.dark-theme h2,
-.dark-theme label {
     color: #e0e0e0;
 }
 
@@ -33,19 +30,17 @@ body {
     padding: 20px;
 }
 
+/* Typography */
 h1,
 h2 {
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 label {
     font-size: 1em;
     color: #757575;
-}
-
-.dark-theme label {
-    color: #e0e0e0;
 }
 
 /* Card and Form Styles */
@@ -62,13 +57,21 @@ form {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.question-form {
+    max-width: 600px;
+    margin: 0px auto;
+    padding: 0px;
+    border-radius: 8px;
+    background-color: #fafafa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+}
+
 .dark-theme .card,
 .dark-theme .question-card,
 .dark-theme .setup-card,
 .dark-theme form {
     background-color: #333;
-    color: #e0e0e0;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
 }
 
 /* Input Field and Select */
@@ -85,7 +88,7 @@ form {
 
 .dark-theme .input-field,
 .dark-theme .browser-default {
-    background-color: #333;
+    background-color: #444;
     color: #e0e0e0;
     border-color: #666;
 }
@@ -101,7 +104,7 @@ button,
     border-radius: 5px;
     cursor: pointer;
     font-weight: 500;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 button:disabled,
@@ -117,6 +120,7 @@ button:disabled,
 
 .start-button:hover {
     background-color: #1976d2;
+    transform: scale(1.05);
 }
 
 .submit-button {
@@ -126,6 +130,7 @@ button:disabled,
 
 .submit-button:hover {
     background-color: #388e3c;
+    transform: scale(1.05);
 }
 
 .question-button {
@@ -137,6 +142,7 @@ button:disabled,
 
 .question-button:hover {
     background-color: #2e7d32;
+    transform: scale(1.05);
 }
 
 .button-primary {
@@ -168,6 +174,7 @@ button:disabled,
 
 .home-button:hover {
     background-color: #1976d2;
+    transform: scale(1.05);
 }
 
 .home-button i {
@@ -183,18 +190,6 @@ button:disabled,
 .dark-theme .start-button:hover,
 .dark-theme .submit-button:hover {
     background-color: #256a27;
-}
-
-.dark-theme .question-button {
-    background-color: #4caf50;
-}
-
-.dark-theme .question-button:disabled {
-    background-color: #666;
-}
-
-.dark-theme .button-primary {
-    background-color: #1976d2;
 }
 
 /* Theme Toggle Button */
@@ -223,56 +218,53 @@ button:disabled,
 }
 
 /* Score Table */
-.score-table {
+.score-table{
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #fafafa;
 }
 
-.dark-theme .score-table {
+.dark-theme .score-table{
     background-color: #333;
-    color: #e0e0e0;
 }
 
 .score-header th {
     background-color: #42a5f5;
     color: #fff;
-    padding: 10px;
-    font-size: 1.1em;
+    padding: 8px;
+    font-size: 1em;
 }
 
 .dark-theme .score-header th {
     background-color: #1e88e5;
-    color: #e0e0e0;
 }
 
 /* Game Board */
 .game-board-container {
-    max-width: 800px;
+    max-width: 95%;
     margin: 0 auto;
 }
 
 .category-header {
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 500;
     background-color: #42a5f5;
     color: #fff;
-    padding: 10px;
+    padding: 8px;
     text-align: center;
 }
 
 .dark-theme .category-header {
     background-color: #1e88e5;
-    color: #e0e0e0;
 }
 
 .table,
-.score-table {
+.score-table{
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 td,
