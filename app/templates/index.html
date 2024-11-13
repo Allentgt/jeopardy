@@ -8,7 +8,9 @@
     <form action="/start_game" method="post">
         <label for="team_names">Enter team names (comma separated):</label>
         <input type="text" id="team_names" name="team_names" class="input-field" required>
-        <button type="submit" class="button-primary">Start Game</button>
+        <div class="button-container">
+            <button type="submit" class="button-primary">Start Game</button>
+        </div>
     </form>
 </div>
 {% endblock %}

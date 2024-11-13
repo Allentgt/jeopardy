@@ -326,3 +326,33 @@ th {
 .dark-theme .questions-left {
     color: #ffffff;
 }
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+/* Button Styles */
+.button-primary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: #2196f3;
+    color: white;
+    font-size: 1.1em;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button-primary:hover {
+    background-color: #1976d2;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button-primary:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
