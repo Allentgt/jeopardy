@@ -58,6 +58,7 @@ async def start_game(request: Request, team_names: str = Form(...), enable_negat
     game_state["teams"] = team_names
     game_state["scores"] = {team: 0 for team in team_names}
     game_state["board"] = [[False] * 5 for _ in range(5)]
+    game_state["questions_left"] = 25
     if enable_negative_marks:
         game_state["enable_negative_marks"] = True
         logger.info("*** Enabled negative marks ***")
@@ -108,13 +109,21 @@ async def submit_answer(request: Request, team: str = Form(...), index: int = Fo
             logger.info("Wrong Answer! No -ve marking though :)")
     game_state["board"][index][value] = True
     game_state["questions_left"] -= 1
-    if game_state["questions_left"] == 0:
+    if game_state["questions_left"] == 23:
+        max_score = max(game_state["scores"].values())
+        print(max_score)
+        teams_with_max_score = [team for team, score in game_state["scores"].items() if score == max_score]
+        tie = False
+        if len(teams_with_max_score) > 1:
+            tie = True
         context = {
             "request": request,
             "game_data": game_data,
             "scores": game_state["scores"],
-            "winner": max(game_state["scores"], key=game_state["scores"].get)
+            "winner": teams_with_max_score,
+            "tie": tie
         }
+        print(context)
         return templates.TemplateResponse("game_over.html", context)
     context = {
         "request": request,
