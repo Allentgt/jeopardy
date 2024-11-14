@@ -8,7 +8,8 @@
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Faculty Glyphic', sans-serif;
+    font-weight: 400;
     background-color: #f5f5f5;
     color: #212121;
     margin: 0;
@@ -20,7 +21,7 @@ body {
 /* Dark Theme Styles */
 .dark-theme {
     background-color: #121212;
-    color: #e0e0e0;
+    color: darkkhaki;
 }
 
 /* Container */
@@ -40,7 +41,7 @@ h2 {
 
 label {
     font-size: 1em;
-    color: #757575;
+    color: wheat;
 }
 
 /* Card and Form Styles */
@@ -77,6 +78,7 @@ form {
 /* Input Field and Select */
 .input-field,
 .browser-default {
+    font-family: 'Faculty Glyphic', sans-serif;
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -89,7 +91,7 @@ form {
 .dark-theme .input-field,
 .dark-theme .browser-default {
     background-color: #444;
-    color: #e0e0e0;
+    color: blanchedalmond;
     border-color: #666;
 }
 
@@ -99,6 +101,7 @@ button,
 .submit-button,
 .question-button,
 .button-primary {
+    font-family: 'Faculty Glyphic', sans-serif;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -134,6 +137,7 @@ button:disabled,
 }
 
 .question-button {
+    font-family: 'Faculty Glyphic', sans-serif;
     width: 100%;
     background-color: #388e3c;
     color: #fff;
@@ -232,13 +236,13 @@ button:disabled,
 
 .score-header th {
     background-color: #42a5f5;
-    color: #fff;
+    color: darkkhaki;
     padding: 8px;
     font-size: 1em;
 }
 
 .dark-theme .score-header th {
-    background-color: #1e88e5;
+    background-color: darkcyan;
 }
 
 /* Game Board */
@@ -250,14 +254,14 @@ button:disabled,
 .category-header {
     font-size: 1.1em;
     font-weight: 500;
-    background-color: #42a5f5;
-    color: #fff;
+    background-color: white;
+    color: darkkhaki;
     padding: 8px;
     text-align: center;
 }
 
 .dark-theme .category-header {
-    background-color: #1e88e5;
+    background-color: #004d40;
 }
 
 .table,
@@ -384,7 +388,7 @@ th {
 
 /* Dark Theme for Checkbox Label */
 .dark-theme .checkbox-container label {
-    color: #e0e0e0;
+    color: wheat;
 }
 
 /* Start Button Container */
