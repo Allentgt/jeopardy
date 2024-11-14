@@ -109,7 +109,7 @@ async def submit_answer(request: Request, team: str = Form(...), index: int = Fo
             logger.info("Wrong Answer! No -ve marking though :)")
     game_state["board"][index][value] = True
     game_state["questions_left"] -= 1
-    if game_state["questions_left"] == 23:
+    if game_state["questions_left"] == 0:
         max_score = max(game_state["scores"].values())
         teams_with_max_score = [team for team, score in game_state["scores"].items() if score == max_score]
         tie = False
