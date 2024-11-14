@@ -96,7 +96,7 @@ async def get_question(request: Request, index: int, value: int):
 async def submit_answer(request: Request, team: str = Form(...), index: int = Form(...), value: int = Form(...),
                         answer: str = Form(...)):
     question = game_data["categories"][index]["questions"][value]
-    if answer.lower() in [question["answer"].lower(), "||"]:
+    if answer.lower() in [question["answer"].lower(), "correct_answer"]:
         game_state["scores"][team] += question["points"]
     elif answer.lower() == "skip_question":
         logger.info("Skipping Question...")
