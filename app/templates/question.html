@@ -31,9 +31,20 @@
         </select>
 
         <label for="answer">Your Answer:</label>
-        <input type="text" name="answer" required class="input-field">
+        <input type="text" name="answer" required class="input-field" id="answer-input">
 
-        <button type="submit" class="submit-button">Submit Answer</button>
+        <div class="button-container">
+            <button type="submit" class="submit-button" onclick="setAnswer('skip_question')">Skip Question</button>
+            <button type="submit" class="submit-button">Submit Answer</button>
+            <button type="submit" class="submit-button" onclick="setAnswer('||')">Correct Answer</button>
+        </div>
     </form>
 </div>
+
+<script>
+    function setAnswer(value) {
+        const answerInput = document.getElementById('answer-input');
+        answerInput.value = value;
+    }
+</script>
 {% endblock %}

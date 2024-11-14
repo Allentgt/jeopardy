@@ -327,10 +327,18 @@ th {
     color: #ffffff;
 }
 
+.start-button-container {
+    display: flex;
+    justify-content: center; /* Ensures space between buttons */
+    gap: 10px; /* Adds a gap between buttons */
+    margin-top: 15px; /* Adds some space above the button container */
+}
+
 .button-container {
     display: flex;
-    justify-content: center;
-    margin-top: 15px;
+    justify-content: space-between; /* Ensures space between buttons */
+    gap: 10px; /* Adds a gap between buttons */
+    margin-top: 15px; /* Adds some space above the button container */
 }
 
 /* Button Styles */
@@ -355,4 +363,33 @@ th {
 .button-primary:active {
     transform: translateY(0);
     box-shadow: none;
+}
+
+/* Checkbox Container */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.checkbox-container label {
+    font-size: 1em;
+    color: #757575;
+    cursor: pointer;
+}
+
+/* Dark Theme for Checkbox Label */
+.dark-theme .checkbox-container label {
+    color: #e0e0e0;
+}
+
+/* Start Button Container */
+.start-button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }

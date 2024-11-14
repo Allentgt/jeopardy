@@ -1,3 +1,4 @@
+import logging
 import os
 
 import uvicorn
@@ -6,6 +7,15 @@ from fastapi import FastAPI, Request, Form, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
 
 app = FastAPI()
 # Mount static files
@@ -43,11 +53,18 @@ async def homepage(request: Request):
 
 
 @app.post("/start_game", response_class=HTMLResponse)
-async def start_game(request: Request, team_names: str = Form(...)):
+async def start_game(request: Request, team_names: str = Form(...), enable_negative_marks: bool = Form(False)):
     team_names = team_names.split(',')
     game_state["teams"] = team_names
     game_state["scores"] = {team: 0 for team in team_names}
     game_state["board"] = [[False] * 5 for _ in range(5)]
+    if enable_negative_marks:
+        game_state["enable_negative_marks"] = True
+        logger.info("*** Enabled negative marks ***")
+    else:
+        game_state["enable_negative_marks"] = False
+        logger.info("*** Disabled negative marks ***")
+
     context = {
         "request": request,
         "game_data": game_data,
@@ -55,6 +72,7 @@ async def start_game(request: Request, team_names: str = Form(...)):
         "board": game_state["board"],
         "questions_left": game_state["questions_left"]
     }
+    logger.info("Started the Game.")
     return templates.TemplateResponse("game.html", context)
 
 
@@ -78,8 +96,16 @@ async def get_question(request: Request, index: int, value: int):
 async def submit_answer(request: Request, team: str = Form(...), index: int = Form(...), value: int = Form(...),
                         answer: str = Form(...)):
     question = game_data["categories"][index]["questions"][value]
-    if answer.lower() == question["answer"].lower():
+    if answer.lower() in [question["answer"].lower(), "||"]:
         game_state["scores"][team] += question["points"]
+    elif answer.lower() == "skip_question":
+        logger.info("Skipping Question...")
+    else:
+        if game_state["enable_negative_marks"]:
+            game_state["scores"][team] -= question["points"]
+            logger.info("Wrong Answer! :(")
+        else:
+            logger.info("Wrong Answer! No -ve marking though :)")
     game_state["board"][index][value] = True
     game_state["questions_left"] -= 1
     if game_state["questions_left"] == 0:
