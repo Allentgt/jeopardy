@@ -111,7 +111,6 @@ async def submit_answer(request: Request, team: str = Form(...), index: int = Fo
     game_state["questions_left"] -= 1
     if game_state["questions_left"] == 23:
         max_score = max(game_state["scores"].values())
-        print(max_score)
         teams_with_max_score = [team for team, score in game_state["scores"].items() if score == max_score]
         tie = False
         if len(teams_with_max_score) > 1:
@@ -123,7 +122,6 @@ async def submit_answer(request: Request, team: str = Form(...), index: int = Fo
             "winner": teams_with_max_score,
             "tie": tie
         }
-        print(context)
         return templates.TemplateResponse("game_over.html", context)
     context = {
         "request": request,
