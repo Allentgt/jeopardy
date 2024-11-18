@@ -10,10 +10,8 @@ from fastapi.templating import Jinja2Templates
 
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.StreamHandler()
-    ]
+    format="%(levelname)s:     %(message)s",
+    handlers=[logging.StreamHandler()]
 )
 logger = logging.getLogger(__name__)
 
@@ -96,41 +94,44 @@ async def get_question(request: Request, index: int, value: int):
 @app.post("/answer", response_class=HTMLResponse)
 async def submit_answer(request: Request, team: str = Form(...), index: int = Form(...), value: int = Form(...),
                         answer: str = Form(...)):
-    question = game_data["categories"][index]["questions"][value]
-    if answer.lower() in [question["answer"].lower(), "<<correct_answer>>"]:
-        game_state["scores"][team] += question["points"]
-    elif answer.lower() == "<<skip_question>>":
-        logger.info("Skipping Question...")
-    else:
-        if game_state["enable_negative_marks"]:
-            game_state["scores"][team] -= question["points"]
-            logger.info("Wrong Answer! :(")
+    try:
+        question = game_data["categories"][index]["questions"][value]
+        if answer.lower() in [question["answer"].lower(), "<<correct_answer>>"]:
+            game_state["scores"][team] += question["points"]
+        elif answer.lower() == "<<skip_question>>":
+            logger.info("Skipping Question...")
         else:
-            logger.info("Wrong Answer! No -ve marking though :)")
-    game_state["board"][index][value] = True
-    game_state["questions_left"] -= 1
-    if game_state["questions_left"] == 0:
-        max_score = max(game_state["scores"].values())
-        teams_with_max_score = [team for team, score in game_state["scores"].items() if score == max_score]
-        tie = False
-        if len(teams_with_max_score) > 1:
-            tie = True
+            if game_state["enable_negative_marks"]:
+                game_state["scores"][team] -= question["points"]
+                logger.info("Wrong Answer! :(")
+            else:
+                logger.info("Wrong Answer! No -ve marking though :)")
+        game_state["board"][index][value] = True
+        game_state["questions_left"] -= 1
+        if game_state["questions_left"] == 0:
+            max_score = max(game_state["scores"].values())
+            teams_with_max_score = [team for team, score in game_state["scores"].items() if score == max_score]
+            tie = False
+            if len(teams_with_max_score) > 1:
+                tie = True
+            context = {
+                "request": request,
+                "game_data": game_data,
+                "scores": game_state["scores"],
+                "winner": teams_with_max_score,
+                "tie": tie
+            }
+            return templates.TemplateResponse("game_over.html", context)
         context = {
             "request": request,
             "game_data": game_data,
             "scores": game_state["scores"],
-            "winner": teams_with_max_score,
-            "tie": tie
+            "board": game_state["board"],
+            "questions_left": game_state["questions_left"]
         }
-        return templates.TemplateResponse("game_over.html", context)
-    context = {
-        "request": request,
-        "game_data": game_data,
-        "scores": game_state["scores"],
-        "board": game_state["board"],
-        "questions_left": game_state["questions_left"]
-    }
-    return templates.TemplateResponse("game.html", context)
+        return templates.TemplateResponse("game.html", context)
+    except (HTTPException, KeyError):
+        return templates.TemplateResponse("index.html", {"request": request})
 
 
 if __name__ == "__main__":

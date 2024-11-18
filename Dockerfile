@@ -1,4 +1,4 @@
-FROM ghcr.io/astral-sh/uv:0.5.0-python3.13-bookworm-slim
+FROM ghcr.io/astral-sh/uv:0.5.0-python3.13-alpine
 LABEL authors="sabdas"
 
 ADD . .
