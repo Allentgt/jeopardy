@@ -39,9 +39,14 @@ h2 {
     margin-bottom: 20px;
 }
 
-label {
+.dark-theme label {
     font-size: 1em;
     color: wheat;
+}
+
+label {
+    font-size: 1em;
+    color: black;
 }
 
 /* Card and Form Styles */
@@ -145,7 +150,7 @@ button:disabled,
 }
 
 .question-button:hover {
-    background-color: #2e7d32;
+    background-color: grey;
     transform: scale(1.05);
 }
 
@@ -236,13 +241,14 @@ button:disabled,
 
 .score-header th {
     background-color: #42a5f5;
-    color: darkkhaki;
+    color: black;
     padding: 8px;
     font-size: 1em;
 }
 
 .dark-theme .score-header th {
     background-color: darkcyan;
+    color: darkkhaki;
 }
 
 /* Game Board */
@@ -255,13 +261,14 @@ button:disabled,
     font-size: 1.1em;
     font-weight: 500;
     background-color: white;
-    color: darkkhaki;
+    color: black;
     padding: 8px;
     text-align: center;
 }
 
 .dark-theme .category-header {
     background-color: #004d40;
+    color: darkkhaki;
 }
 
 .table,
@@ -352,7 +359,7 @@ th {
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    background-color: #2196f3;
+    background-color: darkcyan;
     color: white;
     font-size: 1.1em;
     transition: background-color 0.3s, transform 0.3s;
@@ -382,7 +389,7 @@ th {
 
 .checkbox-container label {
     font-size: 1em;
-    color: #757575;
+    color: black;
     cursor: pointer;
 }
 
