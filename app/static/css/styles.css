@@ -1,249 +1,170 @@
-/* Base Styles */
+/* Universal Styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Faculty Glyphic', sans-serif;
+    font-weight: 400;
     background-color: #f5f5f5;
     color: #212121;
     margin: 0;
     padding: 20px;
     transition: background-color 0.3s, color 0.3s;
+    line-height: 1.6;
 }
 
+/* Dark Theme Styles */
+.dark-theme {
+    background-color: #121212;
+    color: darkkhaki;
+}
+
+/* Container */
 .container {
     max-width: 800px;
     margin: 0 auto;
+    padding: 20px;
 }
 
-h1, h2 {
-    font-weight: 500;
+/* Typography */
+h1,
+h2 {
+    font-weight: 600;
     text-align: center;
+    margin-bottom: 20px;
 }
 
-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 500;
+.dark-theme label {
+    font-size: 1em;
+    color: wheat;
 }
 
-button:disabled {
-    background-color: #9e9e9e;
-    cursor: not-allowed;
+label {
+    font-size: 1em;
+    color: black;
 }
 
-/* Dark Theme */
-.dark-theme {
-    background-color: #121212;
-    color: #e0e0e0;
-}
-
-.dark-theme h1, .dark-theme h2, .dark-theme label {
-    color: #e0e0e0;
-}
-
-.dark-theme .input-field, .dark-theme select {
-    background-color: #333;
-    color: #e0e0e0;
-    border: 1px solid #444;
-}
-
-.dark-theme .button-primary {
-    background-color: #1976d2;
-}
-
-/* Theme Toggle Button */
-.theme-toggle-button {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background-color: transparent;
-    border: none;
-    color: #ffcc00; /* Set color for light mode */
-    font-size: 1.5em;
-    cursor: pointer;
-    outline: none;
-    transition: color 0.3s;
-}
-
-/* Change icon color for dark mode */
-.dark-theme .theme-toggle-button {
-    color: #ffffff; /* Color for dark mode */
-}
-
-/* Custom Styles for Specific Elements */
-
-.score-section p {
-    font-weight: 500;
-    font-size: 1.1em;
-}
-
-.question-card {
+/* Card and Form Styles */
+.card,
+.question-card,
+.setup-card,
+form {
     max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
     border-radius: 8px;
     background-color: #fafafa;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
 }
 
-h1 {
-    font-size: 1.5em;
-    font-weight: 500;
-}
-
-form {
-    margin-top: 20px;
-}
-
-label {
-    font-size: 1em;
-    color: #757575;
-}
-
-.submit-button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.submit-button:hover {
-    background-color: #388e3c;
-}
-
-.setup-card {
-    width: 100%;
-    max-width: 500px;
-    padding: 30px;
+.question-form {
+    max-width: 600px;
+    margin: 0px auto;
+    padding: 0px;
+    border-radius: 8px;
     background-color: #fafafa;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-h1 {
-    font-size: 1.8em;
-    font-weight: 500;
-    margin-bottom: 20px;
+.dark-theme .card,
+.dark-theme .question-card,
+.dark-theme .setup-card,
+.dark-theme form {
+    background-color: #333;
 }
 
-label {
-    font-size: 1em;
-    color: #757575;
-}
-
-.input-field {
+/* Input Field and Select */
+.input-field,
+.browser-default {
+    font-family: 'Faculty Glyphic', sans-serif;
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     font-size: 1em;
     border: 1px solid #ddd;
     border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-.start-button {
-    background-color: #2196f3;
-    color: white;
+.dark-theme .input-field,
+.dark-theme .browser-default {
+    background-color: #444;
+    color: blanchedalmond;
+    border-color: #666;
+}
+
+/* Buttons */
+button,
+.start-button,
+.submit-button,
+.question-button,
+.button-primary {
+    font-family: 'Faculty Glyphic', sans-serif;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    font-size: 1em;
     cursor: pointer;
-}
-
-.start-button:hover {
-    background-color: #1976d2;
-}
-
-.game-board-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-h1 {
-    text-align: center;
     font-weight: 500;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-.team-score {
-    margin-bottom: 20px;
-}
-
-.team-score p {
-    font-weight: 500;
-    font-size: 1.1em;
-}
-
-.category-header {
-    font-size: 1.2em;
-    font-weight: 500;
-    background-color: #42a5f5;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-}
-
-.score-header {
-    font-size: 1.2em;
-    font-weight: 500;
-    background-color: #42a5f5;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-td, th {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: center;
-}
-
-.question-button {
-    width: 100%;
-    font-weight: 500;
-    color: #fff;
-    background-color: #388e3c;
-    border: none;
-    padding: 8px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
+button:disabled,
 .question-button:disabled {
     background-color: #9e9e9e;
     cursor: not-allowed;
 }
 
-.answered {
+.start-button {
+    background-color: #2196f3;
+    color: white;
+}
+
+.start-button:hover {
+    background-color: #1976d2;
+    transform: scale(1.05);
+}
+
+.submit-button {
+    background-color: #4caf50;
+    color: white;
+}
+
+.submit-button:hover {
+    background-color: #388e3c;
+    transform: scale(1.05);
+}
+
+.question-button {
+    font-family: 'Faculty Glyphic', sans-serif;
+    width: 100%;
+    background-color: #388e3c;
+    color: #fff;
     font-weight: 500;
-    color: #757575;
+}
+
+.question-button:hover {
+    background-color: grey;
+    transform: scale(1.05);
 }
 
 .button-primary {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
-    padding: 10px;
     background-color: #2196f3;
     color: white;
-    border-radius: 5px;
     font-size: 1.2em;
 }
 
 .button-primary i {
     margin-right: 5px;
-    font-size: 1.2em;
 }
 
 .home-button {
@@ -262,8 +183,224 @@ td, th {
 
 .home-button:hover {
     background-color: #1976d2;
+    transform: scale(1.05);
 }
 
 .home-button i {
-    margin-right: 5px; /* Adds space between icon and text (if you choose to add text) */
+    margin-right: 5px;
+}
+
+/* Dark Theme for Buttons */
+.dark-theme .start-button,
+.dark-theme .submit-button {
+    background-color: #2e7d32;
+}
+
+.dark-theme .start-button:hover,
+.dark-theme .submit-button:hover {
+    background-color: #256a27;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: #ffcc00;
+    font-size: 1.5em;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.3s;
+}
+
+.dark-theme .theme-toggle-button {
+    color: #ffffff;
+}
+
+/* Score Section */
+.score-section p,
+.team-score p {
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+/* Score Table */
+.score-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
+}
+
+.dark-theme .score-table{
+    background-color: #333;
+}
+
+.score-header th {
+    background-color: #42a5f5;
+    color: black;
+    padding: 8px;
+    font-size: 1em;
+}
+
+.dark-theme .score-header th {
+    background-color: darkcyan;
+    color: darkkhaki;
+}
+
+/* Game Board */
+.game-board-container {
+    max-width: 95%;
+    margin: 0 auto;
+}
+
+.category-header {
+    font-size: 1.1em;
+    font-weight: 500;
+    background-color: white;
+    color: black;
+    padding: 8px;
+    text-align: center;
+}
+
+.dark-theme .category-header {
+    background-color: #004d40;
+    color: darkkhaki;
+}
+
+.table,
+.score-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+td,
+th {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.dark-theme td,
+.dark-theme th {
+    border-color: #555;
+}
+
+/* Media Container for Images and Audio */
+.media-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.responsive-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.responsive-audio {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Answer Form */
+.answer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Miscellaneous */
+.answered {
+    font-weight: 500;
+    color: #757575;
+}
+
+.dark-theme .answered {
+    color: #999;
+}
+
+.questions-left {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+.dark-theme .questions-left {
+    color: darkkhaki;
+}
+
+.start-button-container {
+    display: flex;
+    justify-content: center; /* Ensures space between buttons */
+    gap: 10px; /* Adds a gap between buttons */
+    margin-top: 15px; /* Adds some space above the button container */
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Ensures space between buttons */
+    gap: 10px; /* Adds a gap between buttons */
+    margin-top: 15px; /* Adds some space above the button container */
+}
+
+/* Button Styles */
+.button-primary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: darkcyan;
+    color: white;
+    font-size: 1.1em;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button-primary:hover {
+    background-color: #1976d2;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button-primary:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Checkbox Container */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.checkbox-container label {
+    font-size: 1em;
+    color: black;
+    cursor: pointer;
+}
+
+/* Dark Theme for Checkbox Label */
+.dark-theme .checkbox-container label {
+    color: wheat;
+}
+
+/* Start Button Container */
+.start-button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }

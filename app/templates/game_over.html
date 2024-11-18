@@ -6,28 +6,11 @@
 
 <h1>Game Over</h1>
 
-{% if winner %}
-    <h2>Congratulations to the Winner: {{ winner }}!</h2>
-    <p>Final Scores:</p>
-        <table class="score-table striped highlight centered">
-            <thead class="score-header">
-                <tr>
-                    {% for team in scores.keys() %}
-                    <th>{{ team }}</th>
-                    {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    {% for score in scores.values() %}
-                    <td>{{ score }} points</td>
-                    {% endfor %}
-                </tr>
-            </tbody>
-        </table>
+{% if not tie %}
+    <h2>Congratulations to the Winner: {{ winner[0] }}!</h2>
 {% else %}
-    <h2>It's a Tie!</h2>
-    <p>Final Scores:</p>
+    <h2>Congratulations to all the Winners: {{ ','.join(winner) }}!</h2>
+{% endif %}
         <table class="score-table striped highlight centered">
             <thead class="score-header">
                 <tr>
@@ -44,9 +27,10 @@
                 </tr>
             </tbody>
         </table>
-{% endif %}
 
-<button type="submit" onclick="window.location.href='/'" class="button-primary">Play Again</button>
+    <div class="start-button-container">
+        <button type="button" onclick="window.location.href='/'" class="button-primary">Play Again</button>
+    </div>
 
 <!-- Confetti Script -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>

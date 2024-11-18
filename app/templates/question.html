@@ -6,17 +6,20 @@
 <div class="card">
     <h1>{{ question['question'] }}</h1>
 
-    {% if question['type'] == 'audio' %}
-    <audio controls>
-        <source src="{{ url_for('static', path='audio/' + question['file']) }}" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    {% elif question['type'] == 'image' %}
-    <img src="{{ url_for('static', path='images/' + question['file']) }}" alt="Question Image"
-         style="max-width:100%; margin-top: 10px;">
-    {% endif %}
+    <!-- Media container for image or audio -->
+    <div class="media-container">
+        {% if question['type'] == 'audio' %}
+        <audio controls class="responsive-audio">
+            <source src="{{ url_for('media', path='audio/' + question['file']) }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        {% elif question['type'] == 'image' %}
+        <img src="{{ url_for('media', path='images/' + question['file']) }}" alt="Question Image" class="responsive-image">
+        {% endif %}
+    </div>
 
-    <form action="/answer" method="post">
+    <!-- Form container for answering the question -->
+    <form action="/answer" method="post" class="answer-form">
         <input type="hidden" name="index" value="{{ index }}">
         <input type="hidden" name="value" value="{{ value }}">
 
@@ -26,11 +29,22 @@
             <option value="{{ team }}">{{ team }}</option>
             {% endfor %}
         </select>
-        <br><br><br>
-        <label for="answer">Your Answer:</label>
-        <input type="text" name="answer" required class="input-field">
 
-        <button type="submit" class="submit-button">Submit Answer</button>
+        <label for="answer">Your Answer:</label>
+        <input type="text" name="answer" required class="input-field" id="answer-input">
+
+        <div class="button-container">
+            <button type="submit" class="submit-button" onclick="setAnswer('<<skip_question>>')">Skip Question</button>
+            <button type="submit" class="submit-button">Submit Answer</button>
+            <button type="submit" class="submit-button" onclick="setAnswer('<<correct_answer>>')">Correct Answer</button>
+        </div>
     </form>
 </div>
+
+<script>
+    function setAnswer(value) {
+        const answerInput = document.getElementById('answer-input');
+        answerInput.value = value;
+    }
+</script>
 {% endblock %}

@@ -3,49 +3,52 @@
 {% block title %}Jeopardy Game Board{% endblock %}
 
 {% block content %}
-<h1>Jeopardy Game Board</h1>
+<div class="container">
+    <h1>Jeopardy Game Board</h1>
 
-<!-- Scores Table -->
-<table class="score-table striped highlight centered">
-    <thead class="score-header">
+    <!-- Scores Table -->
+    <table class="score-table striped highlight centered">
+        <thead class="score-header">
+            <tr>
+                {% for team in scores.keys() %}
+                <th>{{ team }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for score in scores.values() %}
+                <td>{{ score }} points</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Game Board Table -->
+    <table class="score-table centered">
+        {% for category_index in range(game_data['categories'] | length) %}
+        {% set category = game_data['categories'][category_index] %}
         <tr>
-            {% for team in scores.keys() %}
-            <th>{{ team }}</th>
+            <th colspan="5" class="category-header">{{ category['name'] }}</th>
+        </tr>
+        <tr>
+            {% for question in category['questions'] %}
+            <td>
+                {% if not question.answered %}
+                <form class="question-form" action="/question/{{ category_index }}/{{ question.points }}" method="get">
+                    <button type="submit" class="question-button" {% if board[category_index][loop.index0] %}disabled{% endif %}>
+                        {{ question.points }}
+                    </button>
+                </form>
+                {% else %}
+                <span class="answered">Answered</span>
+                {% endif %}
+            </td>
             {% endfor %}
         </tr>
-    </thead>
-    <tbody>
-        <tr>
-            {% for score in scores.values() %}
-            <td>{{ score }} points</td>
-            {% endfor %}
-        </tr>
-    </tbody>
-</table>
-
-<table>
-    {% for category_index in range(game_data['categories'] | length) %}
-    {% set category = game_data['categories'][category_index] %}
-    <tr>
-        <th colspan="5" class="category-header">{{ category['name'] }}</th>
-    </tr>
-    <tr>
-        {% for question in category['questions'] %}
-        <td>
-            {% if not question.answered %}
-            <form action="/question/{{ category_index }}/{{ question.points }}" method="get">
-                <button type="submit" class="question-button" {% if board[category_index][loop.index0] %}disabled{%
-                        endif %}>{{ question.points }}
-                </button>
-            </form>
-            {% else %}
-            <span class="answered">Answered</span>
-            {% endif %}
-        </td>
         {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+    </table>
 
-<h2>Questions Left: {{ questions_left }}</h2>
+    <h2 class="questions-left">Questions Left: {{ questions_left }}</h2>
+</div>
 {% endblock %}

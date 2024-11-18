@@ -1,3 +1,4 @@
+import logging
 import os
 
 import uvicorn
@@ -7,9 +8,21 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
 app = FastAPI()
 # Mount static files
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# Mount media files for questions (images, audio, etc.)
+app.mount("/media", StaticFiles(directory="media"), name="media")
 
 # Set up templates
 templates = Jinja2Templates(directory="templates")
@@ -40,11 +53,19 @@ async def homepage(request: Request):
 
 
 @app.post("/start_game", response_class=HTMLResponse)
-async def start_game(request: Request, team_names: str = Form(...)):
+async def start_game(request: Request, team_names: str = Form(...), enable_negative_marks: bool = Form(False)):
     team_names = team_names.split(',')
     game_state["teams"] = team_names
     game_state["scores"] = {team: 0 for team in team_names}
     game_state["board"] = [[False] * 5 for _ in range(5)]
+    game_state["questions_left"] = 25
+    if enable_negative_marks:
+        game_state["enable_negative_marks"] = True
+        logger.info("*** Enabled negative marks ***")
+    else:
+        game_state["enable_negative_marks"] = False
+        logger.info("*** Disabled negative marks ***")
+
     context = {
         "request": request,
         "game_data": game_data,
@@ -52,6 +73,7 @@ async def start_game(request: Request, team_names: str = Form(...)):
         "board": game_state["board"],
         "questions_left": game_state["questions_left"]
     }
+    logger.info("Started the Game.")
     return templates.TemplateResponse("game.html", context)
 
 
@@ -75,16 +97,30 @@ async def get_question(request: Request, index: int, value: int):
 async def submit_answer(request: Request, team: str = Form(...), index: int = Form(...), value: int = Form(...),
                         answer: str = Form(...)):
     question = game_data["categories"][index]["questions"][value]
-    if answer.lower() == question["answer"].lower():
+    if answer.lower() in [question["answer"].lower(), "<<correct_answer>>"]:
         game_state["scores"][team] += question["points"]
+    elif answer.lower() == "<<skip_question>>":
+        logger.info("Skipping Question...")
+    else:
+        if game_state["enable_negative_marks"]:
+            game_state["scores"][team] -= question["points"]
+            logger.info("Wrong Answer! :(")
+        else:
+            logger.info("Wrong Answer! No -ve marking though :)")
     game_state["board"][index][value] = True
     game_state["questions_left"] -= 1
     if game_state["questions_left"] == 0:
+        max_score = max(game_state["scores"].values())
+        teams_with_max_score = [team for team, score in game_state["scores"].items() if score == max_score]
+        tie = False
+        if len(teams_with_max_score) > 1:
+            tie = True
         context = {
             "request": request,
             "game_data": game_data,
             "scores": game_state["scores"],
-            "winner": max(game_state["scores"], key=game_state["scores"].get)
+            "winner": teams_with_max_score,
+            "tie": tie
         }
         return templates.TemplateResponse("game_over.html", context)
     context = {
