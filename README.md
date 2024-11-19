@@ -1,4 +1,8 @@
-## Fun Little Project to host your own Jeopardy game using FastAPI.
+# 🌘 A Lightweight FastAPI Project that enables you to host your own Jeopardy game. 🌒
+## 🚀 Features:
+* Ability to enable negative marks.
+* Supports audio as well as image questions. 
+* Supports mounting local media files and config.
 
 ### Build with Docker
 
