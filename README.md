@@ -1,4 +1,4 @@
-## Fun Little Project to get you started on making your own Jeopardy game using FastAPI.
+## Fun Little Project to host your own Jeopardy game using FastAPI.
 
 ### Build with Docker
 
