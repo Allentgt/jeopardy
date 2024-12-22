@@ -1,111 +1,121 @@
 categories:
-  - name: "Science"
+  - name: "Guess The Logos ™️"
     questions:
-      - question: "What is the chemical symbol for water?"
-        answer: "H2O"
+      - question: "Which company logo is this?"
+        answer: "Discord"
+        points: 100
+        type: "image"
+        file: discord.svg
+      - question: "Which company logo is this?"
+        answer: "Practo"
+        points: 200
+        type: "image"
+        file: practo.jpeg
+      - question: "Which company logo is this?"
+        answer: "Byjus"
+        points: 300
+        type: "image"
+        file: byjus.png
+      - question: "Which company logo is this?"
+        answer: "Meesho"
+        points: 400
+        type: "image"
+        file: meesho.png
+      - question: "Which company logo is this?"
+        answer: "Evernote"
+        points: 500
+        type: "image"
+        file: evernote.png
+  - name: "Pictionary 📷"
+    questions:
+      - question: "Guess the proverb from the image"
+        answer: "Every cloud has a silver lining"
+        points: 100
+        type: "image"
+        file: cloud.jpeg
+      - question: "Guess the proverb from the image"
+        answer: "A picture is worth a thousand words"
+        points: 200
+        type: "image"
+        file: picture.jpeg
+      - question: "Guess the proverb from the image"
+        answer: "Apple doesn't fall far from the tree"
+        points: 300
+        type: "image"
+        file: apple.jpeg
+      - question: "Guess the proverb from the image"
+        answer: "Don't count your chickens before they hatch"
+        points: 400
+        type: "image"
+        file: chicken.jpeg
+      - question: "Guess the proverb from the image"
+        answer: "Beggars can't be choosers"
+        points: 500
+        type: "image"
+        file: beggar.jpeg
+  - name: "Movie from Description 🎬"
+    questions:
+      - question: "Three roommates go on  weird adventures when they receive a call not meant for them"
+        answer: "Hera Pheri"
         points: 100
         type: "text"
-      - question: "Name the planet known as the Red Planet."
-        answer: "Mars"
+      - question: "Man refuses to let his best friend get married because he's clingy"
+        answer: "Sonu Ke Titu Ki Sweety"
         points: 200
         type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
+      - question: "Bougie drama that happens on a boat narrated by a dog"
+        answer: "Dil Dhadakne Do"
         points: 300
         type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
+      - question: "College graduate, unsure of his future, eventually figures it out after being babysat by a woman"
+        answer: "Wake up Sid"
         points: 400
         type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
+      - question: "Dying man insists on getting a family portrait which results in eventual chaos"
+        answer: "Kapoor and Sons"
         points: 500
         type: "text"
-  - name: "History"
+  - name: "Annagrammed Countries ✈️"
     questions:
-      - question: "Who was the first President of the United States?"
-        answer: "George Washington"
+      - question: "CHAIN"
+        answer: "China"
         points: 100
         type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
+      - question: "RABIES"
+        answer: "Siberia"
         points: 200
         type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
+      - question: "ENEMY"
+        answer: "Yemen"
         points: 300
         type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
+      - question: "ARIELS"
+        answer: "Israel"
         points: 400
         type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
+      - question: "ANALOG"
+        answer: "Angola"
         points: 500
         type: "text"
-  - name: "History2"
+  - name: "Capitals 🗺️"
     questions:
-      - question: "Who was the first President of the United States?"
-        answer: "George Washington"
+      - question: "Ireland"
+        answer: "Dublin"
         points: 100
         type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
+      - question: "Bhutan"
+        answer: "Thimphu"
         points: 200
         type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
+      - question: "Portugal"
+        answer: "Lisbon"
         points: 300
         type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
+      - question: "North Korea"
+        answer: "Pyongyang"
         points: 400
         type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
-        points: 500
-        type: "text"
-  - name: "History3"
-    questions:
-      - question: "Who was the first President of the United States?"
-        answer: "George Washington"
-        points: 100
-        type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
-        points: 200
-        type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
-        points: 300
-        type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
-        points: 400
-        type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
-        points: 500
-        type: "text"
-  - name: "History4"
-    questions:
-      - question: "Who was the first President of the United States?"
-        answer: "George Washington"
-        points: 100
-        type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
-        points: 200
-        type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
-        points: 300
-        type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
-        points: 400
-        type: "text"
-      - question: "In what year did the Titanic sink?"
-        answer: "1912"
+      - question: "Fiji"
+        answer: "Suva"
         points: 500
         type: "text"
