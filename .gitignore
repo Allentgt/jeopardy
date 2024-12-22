@@ -8,5 +8,5 @@ wheels/
 .idea
 # Virtual environments
 .venv
-#media
+media
 config*.yaml
